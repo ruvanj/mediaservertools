@@ -4,12 +4,12 @@ import os, shutil, logging
 #TODO add loggging
 #logging.basicConfig(filename='filesort.log')
 
-audio_tags = [".mp3",".flac"]
+audio_tags = [".mp3",".flac",".m4a"]
 video_tags = [".mkv",".mp4"] # unused
 
-audio_dir = os.path.expanduser('~/Music/')
-video_dir = os.path.expanduser('~/Videos/')
-root = os.path.expanduser('~/misc')
+audio_dir = os.path.expanduser('~/plex/data/music/')
+video_dir = os.path.expanduser('~/plex/data/movies/')
+root = os.path.expanduser('~/unsorted')
 preconditions = [audio_dir,video_dir]
 def isMusic(fn):
     for tag in audio_tags:
@@ -44,9 +44,9 @@ if __name__ == "__main__":
             if isMusic(fn):
                 moveTo(fn_path,audio_dir)
             else:
-                moveTo(fn_path,video_dir)
+                moveTo(fn_path,video_dir) #movie directory
         else:
             if containsMusic(fn_path):
                 moveTo(fn_path,audio_dir)
             else:
-                moveTo(fn_path,video_dir)
+                moveTo(fn_path,video_dir) #tv directory
